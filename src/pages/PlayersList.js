@@ -24,7 +24,7 @@ const PlayersList = (props) => {
  // Feteching the list of availabe players from the server
     useEffect(() => {
         const fetchPlayer = async () => {
-        let player = await axios.get('http://localhost:3000/players.json')
+        let player = await axios.get(`${process.env.REACT_APP_BE_BASE_URL}/players.json`)
         setPlayers(player.data)
         }
         fetchPlayer()
