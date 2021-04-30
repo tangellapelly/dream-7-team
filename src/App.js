@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {addPlayer,removePlayer} from './actions/Player'
+import {useSelector,useDispatch} from 'react-redux'
+import PlayersList from './pages/PlayersList'
+import SelectedPlayer from './pages/SelectedPlayer'
 
 function App() {
+
+  const selectedTeam = useSelector(state => state.PlayerTeam) 
+  const dispatach = useDispatch()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h1>Dream 7 Team</h1>
+     <h4>Selected PLayers Count: {selectedTeam.length}</h4>
+     
+      
+      { selectedTeam.length > 0 ? <SelectedPlayer/>:<PlayersList/>}
+      
     </div>
   );
 }
